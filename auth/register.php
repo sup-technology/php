@@ -6,12 +6,13 @@ require BASE_PATH . '/config/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $category_id = $_POST['category_id'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $sql = 'INSERT INTO users (username, email, password) VALUES (:username, :email, :password)';
+    $sql = 'INSERT INTO users (username, email, category_id, password) VALUES (:username, :email, :category_id, :password)';
     $stmt = $pdo->prepare($sql);
 
-    if ($stmt->execute([':username' => $username, ':email' => $email, ':password' => $password])) {
+    if ($stmt->execute([':username' => $username, ':email' => $email, ':category_id' => $category_id, ':password' => $password])) {
         echo 'Registration successful!';
         header('Location: /auth/login.php');
         exit();
@@ -19,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Something went wrong. Please try again.';
     }
 }
+
+$categories = $pdo->query('SELECT * FROM categories')->fetchAll();
+
 ?>
 <?php require(BASE_PATH . '/partials/header.php') ?>
 <link rel="stylesheet" href="/css/register.css">
@@ -34,6 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
         </div>
+
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="category_id">
+                <?php foreach ($categories as $category) { ?>
+                    <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
         <div>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -43,4 +57,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </div>
 
-    <?php require(BASE_PATH . '/partials/footer.php') ?>
+<?php require(BASE_PATH . '/partials/footer.php') ?>
