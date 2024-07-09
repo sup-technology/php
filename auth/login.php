@@ -22,17 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Invalid email or password.';
     }
 }
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
+<?php require(BASE_PATH . '/partials/header.php') ?>
+<link rel="stylesheet" href="/css/login.css">
 
-<body>
+
+<div class="login-container">
     <h2>Login</h2>
     <form action="login.php" method="post">
         <div>
@@ -43,8 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
-    </form>
-</body>
+        <button type="submit" class="btn btn-primary">Login</button>
 
-</html>
+    </form>
+
+</div>
+
+<?php require(BASE_PATH . '/partials/footer.php') ?>

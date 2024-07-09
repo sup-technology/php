@@ -20,16 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+<?php require(BASE_PATH . '/partials/header.php') ?>
+<link rel="stylesheet" href="/css/register.css">
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-
-<body>
+<div class="register-container">
     <h2>Register</h2>
     <form action="register.php" method="post">
         <div>
@@ -46,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <button type="submit">Register</button>
     </form>
-</body>
 
-</html>
+</div>
+
+    <?php require(BASE_PATH . '/partials/footer.php') ?>
