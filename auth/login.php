@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-
 <?php require(BASE_PATH . '/partials/header.php') ?>
+
 <link rel="stylesheet" href="/css/login.css">
 
 
