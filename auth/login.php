@@ -22,22 +22,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Invalid email or password.';
     }
 }
+
 ?>
 
 <?php require(BASE_PATH . '/partials/header.php') ?>
 
+<link rel="stylesheet" href="/css/login.css">
 
-<h2>Login</h2>
-<form action="login.php" method="post">
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button class="btn btn-primary" type="submit">Login</button>
-</form>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+
+    </form>
+
+</div>
 
 <?php require(BASE_PATH . '/partials/footer.php') ?>
