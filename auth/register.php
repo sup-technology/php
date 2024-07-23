@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sql = 'INSERT INTO users (username, email, category_id, password) VALUES (:username, :email, :category_id, :password)';
     $stmt = $pdo->prepare($sql);
-
     if ($stmt->execute([':username' => $username, ':email' => $email, ':category_id' => $category_id, ':password' => $password])) {
         echo 'Registration successful!';
         header('Location: /auth/login.php');
