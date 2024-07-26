@@ -40,7 +40,7 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
 
         <div>
             <label for="category">Category:</label>
-            <select id="category" name="category_id">
+            <select id="category" name="category_id" class="form-select">
                 <?php foreach ($categories as $category) { ?>
                     <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                 <?php } ?>

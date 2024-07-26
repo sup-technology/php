@@ -64,7 +64,7 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <input type="content" class="form-control" name="content" id="content">
+        <textarea class="form-control" name="content" id="content" rows="5"></textarea>
         <span class="text-danger"><?= $errors['content'] ?? '' ?></span>
     </div>
     <div class="mb-3">

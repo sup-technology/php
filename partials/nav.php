@@ -18,18 +18,11 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <?php if ($userId) { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Questions
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="/questions">Questions List</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/questions/create.php">Create Question</a>
-                            </li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/questions">Questions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/questions/create.php">Create Question</a>
                     </li>
                 <?php } ?>
             </ul>
