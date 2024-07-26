@@ -79,6 +79,9 @@ $questions = $stmt->fetchAll();
                             <a class="btn btn-secondary" href="/questions/update.php?id=<?= $question['id'] ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
+                            <a class="btn btn-danger" href="/questions/delete.php?id=<?= $question['id'] ?>">
+                                <i class="bi bi-trash"></i>
+                            </a>
                         </div>
                         <?php } ?>
                     </div>
