@@ -1,5 +1,5 @@
-<?php 
-const BASE_PATH = __DIR__ . '/../'; 
+<?php
+const BASE_PATH = __DIR__ . '/../';
 ?>
 
 <?php
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
 
         $data = [
-            ':title' => $title, 
-            ':content' => $content, 
+            ':title' => $title,
+            ':content' => $content,
             ':category_id' => $category_id,
             ':user_id' => $_SESSION['user_id']
         ];
@@ -64,7 +64,8 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <textarea class="form-control" name="content" id="content" rows="5"></textarea>
+        <div id="editor"></div>
+        <input type="hidden" name="content" id="content">
         <span class="text-danger"><?= $errors['content'] ?? '' ?></span>
     </div>
     <div class="mb-3">
@@ -78,5 +79,35 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+<script type="module">
+    import {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        CodeBlock,
+        List
+    } from 'ckeditor5';
+
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            plugins: [Essentials, Paragraph, Bold, Italic, List, CodeBlock],
+            toolbar: [
+                'undo', 'redo', 'bulletedList', 'numberedList', '|', 'bold', 'italic', '|', 'codeBlock'
+            ]
+        })
+        .then(editor => {
+            window.editor = editor;
+            document.querySelector('form').addEventListener('submit', () => {
+                document.querySelector('#content').value = editor.getData();
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 
 <?php require(BASE_PATH . '/partials/footer.php') ?>

@@ -121,7 +121,7 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
                                 <a href="/questions/view.php?id=<?= $question['id'] ?>">
                                     <h5 class="card-title"><?= $question['title'] ?></h5>
                                 </a>
-                                <p class="card-text"><?= $question['content'] ?></p>
+                                <p class="card-text"><?= htmlspecialchars($question['content']) ?></p>
                             </div>
                             <div class="card-footer">
                                 Created by <a href="#">@<?= $question['username'] ?></a>

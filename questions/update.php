@@ -1,5 +1,5 @@
-<?php 
-const BASE_PATH = __DIR__ . '/../'; 
+<?php
+const BASE_PATH = __DIR__ . '/../';
 ?>
 
 <?php
@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
 
         $data = [
-            ':title' => $title, 
-            ':content' => $content, 
+            ':title' => $title,
+            ':content' => $content,
             ':category_id' => $category_id,
             ':id' => $questionId
         ];
@@ -78,7 +78,10 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <textarea class="form-control" name="content" id="content" rows="5"><?= $question['content'] ?></textarea>
+        <div id="editor">
+          <?= $question['content'] ?>
+        </div>
+        <input type="hidden" name="content" id="content">
         <span class="text-danger"><?= $errors['content'] ?? '' ?></span>
     </div>
     <div class="mb-3">
@@ -92,5 +95,35 @@ $categories = $pdo->query('SELECT * FROM categories')->fetchAll();
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 </form>
+
+<script type="module">
+    import {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        Font,
+        CodeBlock
+    } from 'ckeditor5';
+
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            plugins: [Essentials, Paragraph, Bold, Italic, Font, CodeBlock],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'codeBlock'
+            ]
+        })
+        .then(editor => {
+            window.editor = editor;
+            document.querySelector('form').addEventListener('submit', () => {
+                document.querySelector('#content').value = editor.getData();
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 
 <?php require(BASE_PATH . '/partials/footer.php') ?>
