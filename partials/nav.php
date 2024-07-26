@@ -25,6 +25,12 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         <a class="nav-link" aria-current="page" href="/questions/create.php">Create Question</a>
                     </li>
                 <?php } ?>
+
+                <?php if ($userId) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/admin/list-users.php">Users</a>
+                    </li>
+                <?php } ?>
             </ul>
             <div class="dropdown">
                 <?php if ($userId) { ?>
@@ -32,7 +38,6 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         Actions
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
                         <li><a class="dropdown-item" href="/auth/logout.php">Logout</a></li>
                     </ul>
                 <?php } else { ?>

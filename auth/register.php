@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $category_id = $_POST['category_id'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $sql = 'INSERT INTO users (username, email, category_id, password) VALUES (:username, :email, :category_id, :password)';
+    $sql = 'INSERT INTO users (username, email, category_id, password, role) VALUES (:username, :email, :category_id, :password, :role)';
     $stmt = $pdo->prepare($sql);
-    if ($stmt->execute([':username' => $username, ':email' => $email, ':category_id' => $category_id, ':password' => $password])) {
+    if ($stmt->execute([':username' => $username, ':email' => $email, ':category_id' => $category_id, ':password' => $password, ':role' => 'normal'])) {
         echo 'Registration successful!';
         header('Location: /auth/login.php');
         exit();

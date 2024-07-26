@@ -167,5 +167,5 @@ INSERT INTO `suptech-php`.`questions` (`id`, `title`, `content`, `category_id`, 
 (29, 'what is laravel ', 'content for laravel ', 24, 5, '2024-07-26 21:26:05', '2024-07-26 21:26:05');
 
 INSERT INTO `suptech-php`.`users` (`id`, `username`, `email`, `password`, `category_id`, `created_at`, `updated_at`) VALUES 
-(5, 'mostafa', 'mostafaaminea@gmail.com', '$2y$10$RwmO4uXvxVfRGhx2ehGIX.TuR/3FN8nKPAiwLGU1YYf7sFsQWieHS', 23, '2024-07-26 21:20:14', '2024-07-26 21:20:14'),
-(6, 'ahmed', 'ahmed@gmail.com', '$2y$10$RwmO4uXvxVfRGhx2ehGIX.TuR/3FN8nKPAiwLGU1YYf7sFsQWieHS', 24, '2024-07-26 21:20:14', '2024-07-26 21:20:14');
+(1, 'mostafa', 'mostafaaminea@gmail.com', '$2y$10$RwmO4uXvxVfRGhx2ehGIX.TuR/3FN8nKPAiwLGU1YYf7sFsQWieHS', 23, '2024-07-26 21:20:14', '2024-07-26 21:20:14'),
+(2, 'ahmed', 'ahmed@gmail.com', '$2y$10$RwmO4uXvxVfRGhx2ehGIX.TuR/3FN8nKPAiwLGU1YYf7sFsQWieHS', 24, '2024-07-26 21:20:14', '2024-07-26 21:20:14');
