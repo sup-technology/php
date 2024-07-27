@@ -25,7 +25,6 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         <a class="nav-link" aria-current="page" href="/questions/create.php">Create Question</a>
                     </li>
                 <?php } ?>
-
                 <?php if ($userId) { ?>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/admin/list-users.php">Users</a>
